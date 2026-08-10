@@ -19,7 +19,7 @@ function SubscribeButton() {
     <button
       type="submit"
       disabled={pending}
-      className="shrink-0 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
+      className="shrink-0 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800 disabled:opacity-60"
     >
       {pending ? "Signing up…" : "Subscribe"}
     </button>
@@ -32,9 +32,9 @@ export function NewsletterBand({ source = "blog" }: Props) {
   return (
     <section className="py-10">
       <Container width="wide">
-        <div className="flex flex-col items-start gap-6 rounded-3xl bg-brand-50/60 px-6 py-8 ring-1 ring-brand-100/70 sm:px-9 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col items-start gap-6 rounded-2xl bg-brand-50/60 px-6 py-8 ring-1 ring-brand-100/70 sm:px-9 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-start gap-5">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-600 ring-1 ring-brand-100">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-100/60 text-brand-600 ring-1 ring-brand-100">
               <ServiceIcon name="mail" className="h-7 w-7" />
             </span>
             <div>
@@ -42,8 +42,8 @@ export function NewsletterBand({ source = "blog" }: Props) {
                 Helpful dental tips, straight to your inbox
               </h2>
               <p className="mt-1.5 max-w-md text-[0.9375rem] leading-relaxed text-ink-600">
-                New articles and practical advice from our dentists. No spam,
-                unsubscribe any time.
+                New articles, guides, and special offers — no spam, unsubscribe
+                anytime.
               </p>
             </div>
           </div>

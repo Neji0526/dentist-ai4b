@@ -628,7 +628,7 @@ If you already have a dentist and something feels off, you are allowed to leave.
 If you are in Austin and looking, we are happy to be one of the practices you compare. Book a checkup and see how the first visit feels.`,
     cover_image_url: null,
     author_name: "Dr. Elena Marsh",
-    tags: ["Choosing a dentist", "Dental clinic", "Patient guide"],
+    tags: ["Choosing a dentist", "Dental clinic", "Family dentistry", "Patient guide"],
     read_minutes: 7,
     is_published: true,
     published_at: daysAgo(4),

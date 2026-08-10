@@ -27,11 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const CATEGORIES: BlogCategory[] = [
-  { label: "All articles" },
-  { label: "Preventive care", tag: "Preventive care", icon: "shield" },
-  { label: "Dental implants", tag: "Dental implants", icon: "implant" },
-  { label: "Cosmetic dentistry", tag: "Cosmetic dentistry", icon: "sparkle" },
-  { label: "Teeth cleaning", tag: "Teeth cleaning", icon: "smile" },
+  { label: "All Articles" },
+  { label: "Preventive Care", tag: "Preventive care", icon: "shield" },
+  { label: "Dental Implants", tag: "Dental implants", icon: "implant" },
+  { label: "Cosmetic Dentistry", tag: "Cosmetic dentistry", icon: "sparkle" },
+  { label: "Family Dentistry", tag: "Family dentistry", icon: "users" },
 ];
 
 export default async function BlogPage({ searchParams }: Props) {

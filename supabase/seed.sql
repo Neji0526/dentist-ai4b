@@ -377,7 +377,7 @@ If you already have a dentist and something feels off, you are allowed to leave.
 
 If you are in Austin and looking, we are happy to be one of the practices you compare. Book a checkup and see how the first visit feels.',
   'Dr. Elena Marsh',
-  array['Choosing a dentist', 'Dental clinic', 'Patient guide'],
+  array['Choosing a dentist', 'Dental clinic', 'Family dentistry', 'Patient guide'],
   7, true, now() - interval '4 days',
   'How to Choose a Dentist Near You | 9 Practical Checks',
   'Nine practical checks for choosing a dentist near you — from reading the two-star reviews to confirming written quotes and emergency availability.'

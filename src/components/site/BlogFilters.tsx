@@ -41,7 +41,7 @@ export function BlogFilters({ categories, activeTag, query }: Props) {
                 aria-current={isActive ? "true" : undefined}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-brand-600 text-white"
+                    ? "bg-brand-700 text-white"
                     : "bg-white text-ink-600 ring-1 ring-ink-200 hover:bg-brand-50 hover:text-brand-700 hover:ring-brand-200"
                 }`}
               >
