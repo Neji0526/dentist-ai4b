@@ -51,7 +51,7 @@ export function DoctorCard({ doctor, compact = false }: Props) {
           {doctor.specialties.slice(0, 3).map((specialty) => (
             <li
               key={specialty}
-              className="rounded-full bg-ink-50 px-2.5 py-1 text-xs font-medium text-ink-700"
+              className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-ink-700 ring-1 ring-inset ring-brand-100"
             >
               {specialty}
             </li>

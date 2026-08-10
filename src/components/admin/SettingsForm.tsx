@@ -275,6 +275,13 @@ export function SettingsForm({ settings, action }: Props) {
           help="Shown at the top of the services and appointment pages. Leave blank to use the illustrated artwork."
         />
         <Text
+          name="team_image_url"
+          label="Team photograph URL"
+          type="url"
+          defaultValue={settings.team_image_url}
+          help="Shown at the top of the Our Dentists page. Leave blank to use the illustrated artwork."
+        />
+        <Text
           name="google_reviews_url"
           label="Google reviews URL"
           type="url"

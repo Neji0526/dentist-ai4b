@@ -138,6 +138,7 @@ export type SiteSettings = {
   default_meta_description: string | null;
   og_image_url: string | null;
   hero_image_url: string | null;
+  team_image_url: string | null;
   facebook_url: string | null;
   instagram_url: string | null;
   yelp_url: string | null;

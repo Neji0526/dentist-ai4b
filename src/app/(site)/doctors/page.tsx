@@ -34,23 +34,23 @@ export default async function DoctorsPage() {
   const credentials = [
     {
       icon: "users",
-      title: "Experienced team",
-      copy: `${totalYears}+ years of combined clinical experience.`,
+      title: "Experienced Team",
+      copy: `${totalYears}+ years of combined clinical experience`,
     },
     {
       icon: "shield",
-      title: "Patient first",
-      copy: "We take time to listen and build a plan that is right for you.",
+      title: "Patient First",
+      copy: "We take time to listen and create a plan that’s right for you",
     },
     {
       icon: "star",
-      title: "Trusted locally",
-      copy: "Hundreds of five-star reviews from our community.",
+      title: "Trusted by Patients",
+      copy: "Hundreds of 5-star reviews from our community",
     },
     {
       icon: "heart",
-      title: "Continuity of care",
-      copy: "You see the same familiar faces at every visit.",
+      title: "Continuity of Care",
+      copy: "See the same familiar faces at every visit",
     },
   ];
 
@@ -64,6 +64,7 @@ export default async function DoctorsPage() {
         description={`${doctors.length} clinicians, ${totalYears} years of combined experience, and a deliberately small team so you see the same familiar faces every visit.`}
         breadcrumbs={[{ name: "Our Dentists", path: "/doctors" }]}
         scene="team"
+        image={settings.team_image_url}
         imageAlt={`The team at ${settings.clinic_name}`}
       />
 
@@ -71,7 +72,7 @@ export default async function DoctorsPage() {
         <Container width="wide">
           <FeatureBar items={credentials} variant="card" />
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {doctors.map((doctor) => (
               <DoctorCard key={doctor.id} doctor={doctor} />
             ))}

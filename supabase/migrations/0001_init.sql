@@ -244,8 +244,9 @@ create table if not exists public.site_settings (
   default_meta_title    text,
   default_meta_description text,
   og_image_url          text,
-  -- Optional hero photograph; falls back to illustrated artwork when null.
+  -- Optional photographs; each falls back to illustrated artwork when null.
   hero_image_url        text,
+  team_image_url        text,
   facebook_url          text,
   instagram_url         text,
   yelp_url              text,

@@ -17,6 +17,10 @@ alter table public.services
 alter table public.site_settings
   add column if not exists hero_image_url text;
 
+-- Team photograph at the top of the Our Dentists page.
+alter table public.site_settings
+  add column if not exists team_image_url text;
+
 alter table public.site_settings
   add column if not exists yelp_url text;
 

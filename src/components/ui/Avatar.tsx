@@ -11,8 +11,8 @@ type Props = {
 };
 
 /**
- * Doctor / patient portrait. Falls back to initials on a soft clinical
- * gradient so the layout never breaks before photos are uploaded to Storage.
+ * Doctor / patient portrait. Falls back to initials on a flat clinical tile so
+ * the layout never breaks before photos are uploaded to Storage.
  */
 export function Avatar({
   name,
@@ -40,7 +40,7 @@ export function Avatar({
     <div
       aria-hidden="true"
       style={{ width: size, height: size, fontSize: Math.round(size / 2.8) }}
-      className={`${radius} flex items-center justify-center bg-gradient-to-br from-brand-100 via-brand-50 to-mint-100 font-semibold text-brand-700 ring-1 ring-inset ring-white/70 ${className}`}
+      className={`${radius} flex items-center justify-center bg-brand-100/70 font-semibold text-brand-700 ring-1 ring-inset ring-brand-100 ${className}`}
     >
       {initials(name)}
     </div>

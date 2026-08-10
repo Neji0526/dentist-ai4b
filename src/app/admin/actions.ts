@@ -264,6 +264,7 @@ const SETTINGS_TEXT_FIELDS = [
   "default_meta_description",
   "og_image_url",
   "hero_image_url",
+  "team_image_url",
   "facebook_url",
   "instagram_url",
   "yelp_url",
