@@ -11,7 +11,7 @@ import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
-import { getFaqs, getServices, getSiteSettings, getTestimonials } from "@/lib/data";
+import { getFaqs, getServices, getSiteSettings } from "@/lib/data";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -50,11 +50,10 @@ const PROMISES = [
 ];
 
 export default async function ServicesPage() {
-  const [settings, services, faqs, testimonials] = await Promise.all([
+  const [settings, services, faqs] = await Promise.all([
     getSiteSettings(),
     getServices(),
     getFaqs(),
-    getTestimonials(),
   ]);
 
   const treatmentFaqs = faqs
@@ -62,10 +61,10 @@ export default async function ServicesPage() {
     .slice(0, 5);
 
   const stats = [
-    { icon: "users", value: "12,000+", label: "Happy patients" },
+    { icon: "hands", value: "12,000+", label: "Happy patients" },
     { icon: "star", value: "4.9/5", label: "Google reviews", highlight: true },
-    { icon: "award", value: `18+`, label: `Years in ${settings.city ?? "practice"}` },
-    { icon: "shield", value: "Same-day", label: "Emergency care" },
+    { icon: "award", value: "18+", label: `Years in ${settings.city ?? "practice"}` },
+    { icon: "clock", value: "Same-day", label: "Emergency care" },
   ];
 
   return (
@@ -87,15 +86,12 @@ export default async function ServicesPage() {
             Book an appointment
           </ButtonLink>
           <ButtonLink href="/contact" variant="secondary" size="lg">
-            <ServiceIcon name="question" className="h-[18px] w-[18px]" />
+            <ServiceIcon name="user-question" className="h-[18px] w-[18px]" />
             Ask us a question
           </ButtonLink>
         </div>
 
-        <StatStrip
-          stats={stats}
-          className="mt-8 border-t border-ink-100 pt-6"
-        />
+        <StatStrip stats={stats} className="mt-9" />
       </PageHeader>
 
       <section className="py-14">
@@ -118,7 +114,7 @@ export default async function ServicesPage() {
             </p>
           ) : null}
 
-          <FeatureBar items={PROMISES} variant="card" className="mt-8" />
+          <FeatureBar items={PROMISES} variant="panel" className="mt-6" />
         </Container>
       </section>
 
@@ -144,8 +140,7 @@ export default async function ServicesPage() {
         title="Not sure which treatment you need?"
         description="That is what a consultation is for. Tell us what is bothering you and we will work it out together — no obligation to proceed."
       />
-
-      {testimonials.length > 0 ? <div className="pb-6" /> : null}
+      <div className="pb-14" />
     </>
   );
 }

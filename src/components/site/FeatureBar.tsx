@@ -24,8 +24,9 @@ type Props = {
  * homepage, services, doctors and appointment pages.
  */
 export function FeatureBar({ items, variant = "band", className = "" }: Props) {
-  const divided =
-    variant === "card" || variant === "floating" || variant === "panel";
+  // The "card" variant stays undivided — the doctors design shows the four
+  // credentials separated by white space alone.
+  const divided = variant === "floating" || variant === "panel";
 
   const list = (
     <ul
@@ -83,7 +84,7 @@ export function FeatureBar({ items, variant = "band", className = "" }: Props) {
   if (variant === "card") {
     return (
       <div
-        className={`rounded-2xl bg-white p-6 ring-1 ring-ink-100 sm:p-7 ${className}`}
+        className={`rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(13,31,45,0.04),0_18px_40px_-28px_rgba(13,31,45,0.25)] ring-1 ring-ink-100/80 sm:p-7 ${className}`}
       >
         {list}
       </div>

@@ -49,6 +49,7 @@ export const demoSettings: SiteSettings = {
     "Looking for a dentist near you in Austin? Brightsmile Dental Studio offers teeth cleaning, dental implants and cosmetic dentistry with same-week appointments. Book online today.",
   og_image_url: null,
   hero_image_url: null,
+  team_image_url: null,
   facebook_url: "https://www.facebook.com/",
   instagram_url: "https://www.instagram.com/",
   yelp_url: "https://www.yelp.com/",
