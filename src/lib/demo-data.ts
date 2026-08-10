@@ -48,8 +48,10 @@ export const demoSettings: SiteSettings = {
   default_meta_description:
     "Looking for a dentist near you in Austin? Brightsmile Dental Studio offers teeth cleaning, dental implants and cosmetic dentistry with same-week appointments. Book online today.",
   og_image_url: null,
-  facebook_url: null,
-  instagram_url: null,
+  hero_image_url: null,
+  facebook_url: "https://www.facebook.com/",
+  instagram_url: "https://www.instagram.com/",
+  yelp_url: "https://www.yelp.com/",
   google_reviews_url: "https://www.google.com/maps",
   updated_at: NOW,
 };
@@ -67,7 +69,9 @@ Every cleaning at our dental clinic includes a complete oral exam, low-radiation
 
 Most patients do best with a cleaning every six months. If you have not seen a dentist in a while, that is genuinely fine: we will never lecture you. We simply start where you are.`,
     image_url: null,
+    hero_image_url: null,
     icon: "sparkle",
+    badge: null,
     price_from: 89,
     duration: "45–60 minutes",
     benefits: [
@@ -96,7 +100,9 @@ Unlike a bridge, an implant does not rely on the neighbouring teeth for support,
 
 Your consultation includes a 3D scan, a written treatment plan and a clear, itemised cost — before you commit to anything. We also offer monthly payment plans.`,
     image_url: null,
+    hero_image_url: null,
     icon: "implant",
+    badge: null,
     price_from: 1850,
     duration: "2 visits + healing time",
     benefits: [
@@ -125,7 +131,9 @@ Depending on your goals we may recommend porcelain veneers, composite bonding to
 
 We are deliberately conservative about removing enamel. If a more minimal treatment will get you 90% of the way there, we will tell you.`,
     image_url: null,
+    hero_image_url: null,
     icon: "smile",
+    badge: null,
     price_from: 320,
     duration: "1–3 visits",
     benefits: [
@@ -154,7 +162,9 @@ We offer a single in-chair session of about an hour, or a custom take-home kit w
 
 If sensitivity is a worry, say so. We use a desensitising protocol that makes whitening comfortable for the great majority of patients.`,
     image_url: null,
+    hero_image_url: null,
     icon: "sparkle",
+    badge: null,
     price_from: 249,
     duration: "60 minutes",
     benefits: [
@@ -183,7 +193,9 @@ Treatment starts with a digital scan — no impression putty — and a simulatio
 
 We monitor your progress in short check-in visits and include a set of retainers at the end, because keeping the result matters as much as achieving it.`,
     image_url: null,
+    hero_image_url: null,
     icon: "aligner",
+    badge: "Most popular",
     price_from: 3400,
     duration: "6–18 months",
     benefits: [
@@ -212,7 +224,9 @@ Come to us for severe toothache, a cracked or knocked-out tooth, facial swelling
 
 If you are calling outside opening hours, our recorded message gives you the after-hours number and clear first-aid steps.`,
     image_url: null,
+    hero_image_url: null,
     icon: "shield",
+    badge: "Same-day",
     price_from: null,
     duration: "Same-day appointment",
     benefits: [
@@ -241,7 +255,9 @@ Left untreated, an infected pulp leads to abscess and eventually tooth loss. A r
 
 We use rotary instrumentation and digital imaging to finish most cases in one appointment.`,
     image_url: null,
+    hero_image_url: null,
     icon: "tooth",
+    badge: null,
     price_from: 690,
     duration: "60–90 minutes",
     benefits: [
@@ -270,7 +286,9 @@ Preventive care does the heavy lifting: fluoride varnish, sealants on the back t
 
 Parents are welcome to stay beside the chair for every appointment.`,
     image_url: null,
+    hero_image_url: null,
     icon: "child",
+    badge: null,
     price_from: 79,
     duration: "30 minutes",
     benefits: [

@@ -10,6 +10,10 @@ const supabaseHost = (() => {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Lets `NEXT_BUILD_DIR=.next-build npm run build` run while a dev server is
+  // still using .next — handy on Windows, where the dev server keeps a lock on
+  // its own output directory.
+  distDir: process.env.NEXT_BUILD_DIR || ".next",
   images: {
     remotePatterns: [
       // Images uploaded through the admin panel live in Supabase Storage.

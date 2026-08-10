@@ -26,7 +26,9 @@ export type Service = {
   short_description: string | null;
   description: string | null;
   image_url: string | null;
+  hero_image_url: string | null;
   icon: string | null;
+  badge: string | null;
   price_from: number | null;
   duration: string | null;
   benefits: string[];
@@ -135,8 +137,10 @@ export type SiteSettings = {
   default_meta_title: string | null;
   default_meta_description: string | null;
   og_image_url: string | null;
+  hero_image_url: string | null;
   facebook_url: string | null;
   instagram_url: string | null;
+  yelp_url: string | null;
   google_reviews_url: string | null;
   updated_at: string;
 };
@@ -171,4 +175,12 @@ export type NewLead = {
   message?: string | null;
   source?: string | null;
   page_path?: string | null;
+};
+
+export type Subscriber = {
+  id: string;
+  email: string;
+  source: string | null;
+  is_active: boolean;
+  created_at: string;
 };

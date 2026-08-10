@@ -12,7 +12,7 @@ insert into public.site_settings (
   address_line, city, state, postal_code, map_embed_url,
   opening_hours, emergency_note,
   default_meta_title, default_meta_description,
-  google_reviews_url
+  facebook_url, instagram_url, yelp_url, google_reviews_url
 ) values (
   1,
   'Brightsmile Dental Studio',
@@ -34,6 +34,9 @@ insert into public.site_settings (
   'Dental emergency? Call us and we will see you the same day whenever possible.',
   'Dentist in Austin, TX | Brightsmile Dental Studio',
   'Looking for a dentist near you in Austin? Brightsmile Dental Studio offers teeth cleaning, dental implants and cosmetic dentistry with same-week appointments. Book online today.',
+  'https://www.facebook.com/',
+  'https://www.instagram.com/',
+  'https://www.yelp.com/',
   'https://www.google.com/maps'
 )
 on conflict (id) do update set
@@ -57,7 +60,7 @@ on conflict (id) do update set
 -- ---------------------------------------------------------------------------
 insert into public.services
   (title, slug, short_description, description, icon, price_from, duration,
-   benefits, is_featured, sort_order, meta_title, meta_description)
+   benefits, badge, is_featured, sort_order, meta_title, meta_description)
 values
 (
   'Teeth Cleaning & Checkups',
@@ -75,7 +78,7 @@ Most patients do best with a cleaning every six months. If you have not seen a d
     'Includes digital X-rays and an oral cancer screening',
     'Leaves your teeth visibly brighter and smoother'
   ],
-  true, 10,
+  null, true, 10,
   'Teeth Cleaning in Austin, TX | Brightsmile Dental Studio',
   'Professional teeth cleaning and dental checkups in Austin from $89. Gentle hygienists, digital X-rays and same-week appointments. Book your cleaning online.'
 ),
@@ -95,7 +98,7 @@ Your consultation includes a 3D scan, a written treatment plan and a clear, item
     'Custom crown colour-matched to your natural teeth',
     'Designed to last for decades, not years'
   ],
-  true, 20,
+  null, true, 20,
   'Dental Implants in Austin, TX | Brightsmile Dental Studio',
   'Permanent dental implants in Austin from $1,850 with 3D planning and monthly payment plans. Free implant consultation — book online or call (512) 555-0142.'
 ),
@@ -115,7 +118,7 @@ We are deliberately conservative about removing enamel. If a more minimal treatm
     'Minimal-prep options that preserve natural enamel',
     'Shade-matched in natural daylight, not under a lamp'
   ],
-  true, 30,
+  null, true, 30,
   'Cosmetic Dentist in Austin, TX | Veneers & Smile Design',
   'Cosmetic dentist in Austin offering porcelain veneers, bonding and smile design from $320. See a digital preview of your smile before you commit. Book a consultation.'
 ),
@@ -135,7 +138,7 @@ If sensitivity is a worry, say so. We use a desensitising protocol that makes wh
     'Custom take-home trays to maintain the result',
     'Desensitising protocol for sensitive teeth'
   ],
-  false, 40,
+  null, false, 40,
   'Professional Teeth Whitening in Austin, TX | Brightsmile Dental',
   'In-chair professional teeth whitening in Austin from $249. Several shades brighter in one hour, with a desensitising protocol for sensitive teeth.'
 ),
@@ -155,7 +158,7 @@ We monitor your progress in short check-in visits and include a set of retainers
     'See a month-by-month simulation before starting',
     'Retainers included to protect the result'
   ],
-  false, 50,
+  'Most popular', false, 50,
   'Invisalign & Clear Aligners in Austin, TX | Brightsmile Dental',
   'Clear aligners and Invisalign in Austin from $3,400 with digital scanning, month-by-month simulation and retainers included. Book a free aligner assessment.'
 ),
@@ -175,7 +178,7 @@ If you are calling outside opening hours, our recorded message gives you the aft
     'Cracked, knocked-out and abscessed teeth treated',
     'Clear after-hours guidance when we are closed'
   ],
-  true, 60,
+  'Same-day', true, 60,
   'Emergency Dentist in Austin, TX | Same-Day Appointments',
   'Emergency dentist in Austin with same-day appointments for toothache, broken teeth and swelling. Call (512) 555-0142 for immediate dental pain relief.'
 ),
@@ -195,7 +198,7 @@ We use rotary instrumentation and digital imaging to finish most cases in one ap
     'Most cases completed in a single visit',
     'Thorough anaesthetic — comfort is the priority'
   ],
-  false, 70,
+  null, false, 70,
   'Root Canal Treatment in Austin, TX | Brightsmile Dental Studio',
   'Comfortable root canal treatment in Austin from $690, usually in a single visit. Save your natural tooth and end the pain. Book an assessment today.'
 ),
@@ -215,7 +218,7 @@ Parents are welcome to stay beside the chair for every appointment.',
     'Early monitoring of jaw and adult-tooth development',
     'Parents stay beside the chair, always'
   ],
-  false, 80,
+  null, false, 80,
   'Children''s Dentist in Austin, TX | Brightsmile Dental Studio',
   'Gentle children''s dentistry in Austin from $79. Friendly first visits, fluoride and sealants, and parents welcome beside the chair. Book your child''s checkup.'
 )

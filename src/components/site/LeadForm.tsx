@@ -6,6 +6,7 @@ import { useFormStatus } from "react-dom";
 
 import { initialLeadFormState, submitLeadAction } from "@/app/actions/lead";
 import { Button } from "@/components/ui/Button";
+import { ServiceIcon } from "@/components/ui/ServiceIcon";
 
 type Props = {
   /** Service titles offered in the dropdown. */
@@ -19,6 +20,10 @@ type Props = {
   description?: string;
   /** Ask for a preferred day and time as well as the basics. */
   withScheduling?: boolean;
+  /** Icon badge above the form heading. */
+  icon?: string;
+  /** Reassurance line under the submit button, e.g. response time. */
+  footnote?: string;
   className?: string;
 };
 
@@ -72,7 +77,10 @@ function SubmitButton() {
           Sending…
         </>
       ) : (
-        "Request my appointment"
+        <>
+          <ServiceIcon name="send" className="h-[18px] w-[18px]" />
+          Request my appointment
+        </>
       )}
     </Button>
   );
@@ -86,6 +94,8 @@ export function LeadForm({
   title = "Request an appointment",
   description = "Send us your details and we'll call you back within one business hour to confirm a time.",
   withScheduling = false,
+  icon = "calendar",
+  footnote,
   className = "",
 }: Props) {
   const [state, formAction] = useActionState(submitLeadAction, initialLeadFormState);
@@ -114,10 +124,10 @@ export function LeadForm({
               <path d="M20 6L9 17l-5-5" />
             </svg>
           </div>
-          <h3 className="mt-5 text-xl">Thank you — we've got your request</h3>
+          <h3 className="mt-5 text-xl">Thank you — we’ve got your request</h3>
           <p className="mt-2 max-w-sm text-ink-600">
             One of our team will call you within one business hour to confirm your
-            appointment. If it's urgent, please call us directly.
+            appointment. If it’s urgent, please call us directly.
           </p>
         </div>
       </div>
@@ -130,7 +140,10 @@ export function LeadForm({
   return (
     <div className={`${shell} ${className}`}>
       {variant === "card" ? (
-        <div className="mb-5">
+        <div className="mb-6">
+          <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+            <ServiceIcon name={icon} className="h-6 w-6" />
+          </span>
           <h3 className="text-xl">{title}</h3>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{description}</p>
         </div>
@@ -236,7 +249,7 @@ export function LeadForm({
             defaultValue={values.service ?? defaultService ?? ""}
             className={FIELD}
           >
-            <option value="">I'm not sure yet</option>
+            <option value="">I’m not sure yet</option>
             {services.map((service) => (
               <option key={service.slug} value={service.title}>
                 {service.title}
@@ -302,9 +315,19 @@ export function LeadForm({
 
         <SubmitButton />
 
-        <p className="text-center text-xs leading-relaxed text-ink-500">
-          We use your details only to contact you about your appointment. No
-          marketing, ever.
+        {footnote ? (
+          <p className="flex items-center justify-center gap-2 text-sm text-ink-600">
+            <ServiceIcon name="clock" className="h-4 w-4 shrink-0 text-brand-500" />
+            {footnote}
+          </p>
+        ) : null}
+
+        <p className="flex items-start justify-center gap-2 text-center text-xs leading-relaxed text-ink-500">
+          <ServiceIcon name="lock" className="mt-px h-3.5 w-3.5 shrink-0 text-ink-400" />
+          <span>
+            We use your details only to contact you about your appointment. No
+            marketing, ever.
+          </span>
         </p>
       </form>
     </div>

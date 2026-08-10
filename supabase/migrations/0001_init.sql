@@ -105,7 +105,10 @@ create table if not exists public.services (
   short_description text,
   description       text,
   image_url         text,
+  hero_image_url    text,
   icon              text default 'tooth',
+  -- Small ribbon on the services grid, e.g. "Most popular".
+  badge             text,
   price_from        numeric(10, 2),
   duration          text,
   benefits          text[] not null default '{}',
@@ -211,6 +214,17 @@ create table if not exists public.leads (
 );
 
 -- ---------------------------------------------------------------------------
+-- subscribers — newsletter signups from the blog
+-- ---------------------------------------------------------------------------
+create table if not exists public.subscribers (
+  id         uuid primary key default gen_random_uuid(),
+  email      text not null,
+  source     text default 'blog',
+  is_active  boolean not null default true,
+  created_at timestamptz not null default now()
+);
+
+-- ---------------------------------------------------------------------------
 -- site_settings — singleton row for NAP + default SEO
 -- ---------------------------------------------------------------------------
 create table if not exists public.site_settings (
@@ -230,8 +244,11 @@ create table if not exists public.site_settings (
   default_meta_title    text,
   default_meta_description text,
   og_image_url          text,
+  -- Optional hero photograph; falls back to illustrated artwork when null.
+  hero_image_url        text,
   facebook_url          text,
   instagram_url         text,
+  yelp_url              text,
   google_reviews_url    text,
   updated_at            timestamptz not null default now()
 );
@@ -269,6 +286,9 @@ create index if not exists idx_faq_published      on public.faq (is_published, s
 create index if not exists idx_leads_status       on public.leads (status, created_at desc);
 create index if not exists idx_leads_created_at   on public.leads (created_at desc);
 create index if not exists idx_leads_service      on public.leads (service_id);
+-- Case-insensitive uniqueness without needing the citext extension.
+create unique index if not exists idx_subscribers_email on public.subscribers (lower(email));
+create index if not exists idx_subscribers_created  on public.subscribers (created_at desc);
 
 -- ===========================================================================
 -- Row Level Security
@@ -282,6 +302,7 @@ alter table public.testimonials  enable row level security;
 alter table public.blogs         enable row level security;
 alter table public.faq           enable row level security;
 alter table public.leads         enable row level security;
+alter table public.subscribers   enable row level security;
 alter table public.site_settings enable row level security;
 
 -- profiles ------------------------------------------------------------------
@@ -364,6 +385,19 @@ create policy "leads: admin update" on public.leads
 drop policy if exists "leads: admin delete" on public.leads;
 create policy "leads: admin delete" on public.leads
   for delete using (public.is_admin());
+
+-- subscribers: same write-only shape as leads -------------------------------
+drop policy if exists "subscribers: public create" on public.subscribers;
+create policy "subscribers: public create" on public.subscribers
+  for insert to anon, authenticated with check (true);
+
+drop policy if exists "subscribers: admin read" on public.subscribers;
+create policy "subscribers: admin read" on public.subscribers
+  for select using (public.is_admin());
+
+drop policy if exists "subscribers: admin manage" on public.subscribers;
+create policy "subscribers: admin manage" on public.subscribers
+  for all using (public.is_admin()) with check (public.is_admin());
 
 -- site_settings -------------------------------------------------------------
 drop policy if exists "site_settings: public read" on public.site_settings;
