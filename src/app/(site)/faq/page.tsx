@@ -29,7 +29,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   Payment: "card",
   Comfort: "heart",
   Treatments: "tooth",
-  Children: "child",
+  Children: "users",
   Emergencies: "bell",
   General: "question",
 };
@@ -76,22 +76,24 @@ export default async function FaqPage() {
             </p>
           ) : (
             <div className="grid gap-10">
+              {/* Icon in its own gutter, heading stacked above the card — the
+                  arrangement the design uses for each category. */}
               {categories.map((group) => (
                 <div
                   key={group.name}
-                  className="grid gap-5 lg:grid-cols-[auto_1fr] lg:gap-8"
+                  className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-3 sm:gap-x-8"
                 >
-                  <div className="flex items-center gap-3.5 lg:w-52 lg:items-start">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                      <ServiceIcon
-                        name={CATEGORY_ICONS[group.name] ?? "question"}
-                        className="h-[22px] w-[22px]"
-                      />
-                    </span>
-                    <h2 className="text-xl leading-tight">{group.name}</h2>
-                  </div>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                    <ServiceIcon
+                      name={CATEGORY_ICONS[group.name] ?? "question"}
+                      className="h-[22px] w-[22px]"
+                    />
+                  </span>
 
-                  <FaqAccordion faqs={group.items} />
+                  <div className="min-w-0">
+                    <h2 className="text-xl leading-tight">{group.name}</h2>
+                    <FaqAccordion faqs={group.items} className="mt-3.5" />
+                  </div>
                 </div>
               ))}
             </div>
@@ -101,14 +103,14 @@ export default async function FaqPage() {
 
       <CtaBand
         phone={settings.phone}
-        icon="question"
+        icon="question-bubble"
         title="Still have a question?"
         description="Ask us directly — we would rather answer it now than have you wonder about it in the chair."
       />
 
       <PeopleBand
         title="Real people. Real answers."
-        description="No bots, no runaround. Just our team, here to help."
+        description="No bots. No runaround. Just our team, here to help."
         doctors={doctors}
       />
       <div className="pb-10" />

@@ -4,15 +4,22 @@ type Props = {
   faqs: Faq[];
   /** Opens the first item, useful on the FAQ page itself. */
   defaultOpenFirst?: boolean;
+  className?: string;
 };
 
 /**
  * Built on <details>, so it works with JavaScript disabled and stays
  * keyboard-accessible without any custom ARIA wiring.
  */
-export function FaqAccordion({ faqs, defaultOpenFirst = false }: Props) {
+export function FaqAccordion({
+  faqs,
+  defaultOpenFirst = false,
+  className = "",
+}: Props) {
   return (
-    <div className="divide-y divide-ink-100 overflow-hidden rounded-2xl bg-white ring-1 ring-ink-100">
+    <div
+      className={`divide-y divide-ink-100 overflow-hidden rounded-2xl bg-white ring-1 ring-ink-100 ${className}`}
+    >
       {faqs.map((faq, index) => (
         <details
           key={faq.id}

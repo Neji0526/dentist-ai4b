@@ -20,9 +20,9 @@ export function PeopleBand({ title, description, note = "We're here for you!", d
   return (
     <section className="pb-4 pt-10">
       <Container width="wide">
-        <div className="flex flex-col items-start gap-7 rounded-3xl bg-brand-50/60 px-6 py-8 ring-1 ring-brand-100/70 sm:px-9 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col items-start gap-7 rounded-2xl bg-brand-50/60 px-6 py-8 ring-1 ring-brand-100/70 sm:px-9 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-start gap-5">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-600 ring-1 ring-brand-100">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-100/60 text-brand-600 ring-1 ring-brand-100">
               <ServiceIcon name="users" className="h-7 w-7" />
             </span>
             <div>
@@ -53,7 +53,7 @@ export function PeopleBand({ title, description, note = "We're here for you!", d
                   ) : (
                     <span
                       title={doctor.name}
-                      className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-100 via-brand-50 to-mint-100 text-sm font-semibold text-brand-700 ring-4 ring-white"
+                      className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-100/70 text-sm font-semibold text-brand-700 ring-4 ring-white"
                     >
                       {initials(doctor.name)}
                     </span>
