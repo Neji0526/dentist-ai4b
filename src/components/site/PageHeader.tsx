@@ -36,11 +36,13 @@ export function PageHeader({
 }: Props) {
   const hasMedia = Boolean(scene || image);
 
+  // Flat tint rather than a gradient, so the band reads as one clean surface
+  // that ends at the border — as in the page designs.
   return (
-    <section className="relative overflow-hidden border-b border-ink-100 bg-gradient-to-b from-brand-50/70 via-white to-white">
+    <section className="relative overflow-hidden border-b border-ink-100 bg-brand-50/40">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 -top-40 h-96 w-96 rounded-full bg-brand-100/40 blur-3xl"
+        className="pointer-events-none absolute -left-32 -top-40 h-96 w-96 rounded-full bg-brand-100/30 blur-3xl"
       />
 
       <Container width="wide">
