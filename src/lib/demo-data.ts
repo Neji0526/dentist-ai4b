@@ -407,6 +407,7 @@ export const demoTestimonials: Testimonial[] = [
       "I had avoided dentists for eleven years out of pure fear. Dr. Marsh talked me through every single step and stopped whenever I raised a hand. Two visits later I am fully caught up and genuinely not scared any more.",
     rating: 5,
     treatment: "Teeth Cleaning",
+    photo_url: "/images/patient-marcus.jpg",
     service_id: "svc-teeth-cleaning",
     is_published: true,
     sort_order: 10,
@@ -419,6 +420,7 @@ export const demoTestimonials: Testimonial[] = [
       "Cracked a molar on a Sunday evening and they saw me first thing Monday. Out of pain within the hour, permanent crown three weeks later. No drama, no surprise bill.",
     rating: 5,
     treatment: "Emergency Care",
+    photo_url: "/images/patient-rachel.jpg",
     service_id: "svc-emergency",
     is_published: true,
     sort_order: 20,
@@ -431,6 +433,7 @@ export const demoTestimonials: Testimonial[] = [
       "I lost a front tooth in a bike accident. The implant Dr. Marsh placed is indistinguishable from the others — my own mother could not pick which one it was.",
     rating: 5,
     treatment: "Dental Implants",
+    photo_url: "/images/patient-daniel.jpg",
     service_id: "svc-dental-implants",
     is_published: true,
     sort_order: 30,
@@ -443,6 +446,7 @@ export const demoTestimonials: Testimonial[] = [
       "Dr. Okonjo showed me a digital preview of my veneers and I asked to make them smaller and less white. He agreed immediately. The result looks like my teeth, just better.",
     rating: 5,
     treatment: "Porcelain Veneers",
+    photo_url: "/images/patient-sofia.jpg",
     service_id: "svc-cosmetic",
     is_published: true,
     sort_order: 40,
@@ -455,6 +459,7 @@ export const demoTestimonials: Testimonial[] = [
       "Fourteen months of aligners and my bottom teeth are finally straight at thirty-eight. Dr. Raman was realistic from day one about what would and would not shift.",
     rating: 5,
     treatment: "Clear Aligners",
+    photo_url: null,
     service_id: "svc-aligners",
     is_published: true,
     sort_order: 50,
@@ -467,6 +472,7 @@ export const demoTestimonials: Testimonial[] = [
       "My six-year-old asks when she can go back to the dentist. I did not think that was a sentence I would ever type.",
     rating: 5,
     treatment: "Children's Dentistry",
+    photo_url: null,
     service_id: "svc-childrens",
     is_published: true,
     sort_order: 60,
@@ -627,7 +633,7 @@ You will know. If you were rushed, talked over, or sold to, no amount of technol
 If you already have a dentist and something feels off, you are allowed to leave. Ask for your records and X-rays — they are yours, and any practice will forward them. Nobody needs to have a difficult conversation about it.
 
 If you are in Austin and looking, we are happy to be one of the practices you compare. Book a checkup and see how the first visit feels.`,
-    cover_image_url: null,
+    cover_image_url: "/images/blog-choosing-a-dentist.jpg",
     author_name: "Dr. Elena Marsh",
     tags: ["Choosing a dentist", "Dental clinic", "Family dentistry", "Patient guide"],
     read_minutes: 7,
@@ -677,7 +683,7 @@ The exam matters as much as the scale. Cavities caught early need a small fillin
 Start at six months. Ask your dentist directly, at your next visit, what interval they recommend for *you* and why. If they cannot point to something in your mouth to justify the answer, ask again.
 
 If it has been years rather than months, book anyway. We have genuinely seen it all, and nobody at this clinic is going to make you feel bad about it.`,
-    cover_image_url: null,
+    cover_image_url: "/images/blog-teeth-cleaning.jpg",
     author_name: "Anna Whitfield",
     tags: ["Teeth cleaning", "Preventive care", "Gum health"],
     read_minutes: 6,
@@ -736,7 +742,7 @@ Cleaning differs too: you brush and floss an implant like a normal tooth, while 
 Your consultation includes a 3D scan that shows exactly how much bone you have, which often settles the question on its own. You will leave with both options quoted in writing, including the long-term replacement costs, so you can compare like with like.
 
 Book an implant consultation and we will tell you honestly which one we would choose in your position.`,
-    cover_image_url: null,
+    cover_image_url: "/images/blog-implants-vs-bridges.jpg",
     author_name: "Dr. Elena Marsh",
     tags: ["Dental implants", "Bridges", "Missing teeth"],
     read_minutes: 8,
@@ -787,7 +793,7 @@ If you are not genuinely pleased with the preview, the design is not finished. T
 - What happens if I do not like the trial smile?
 
 Book a cosmetic consultation and start with the preview. There is no obligation to go further.`,
-    cover_image_url: null,
+    cover_image_url: "/images/blog-cosmetic-dentistry.jpg",
     author_name: "Dr. Samuel Okonjo",
     tags: ["Cosmetic dentistry", "Veneers", "Smile design"],
     read_minutes: 6,

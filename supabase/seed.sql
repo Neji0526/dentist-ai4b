@@ -295,14 +295,16 @@ on conflict (slug) do nothing;
 -- ---------------------------------------------------------------------------
 -- Testimonials
 -- ---------------------------------------------------------------------------
-insert into public.testimonials (patient_name, message, rating, treatment, sort_order)
+-- photo_url points at the placeholder portraits in public/images. Replace these
+-- with real patient photographs (written consent required) or set them to null.
+insert into public.testimonials (patient_name, message, rating, treatment, photo_url, sort_order)
 values
-('Marcus T.', 'I had avoided dentists for eleven years out of pure fear. Dr. Marsh talked me through every single step and stopped whenever I raised a hand. Two visits later I am fully caught up and genuinely not scared any more.', 5, 'Teeth Cleaning', 10),
-('Rachel P.', 'Cracked a molar on a Sunday evening and they saw me first thing Monday. Out of pain within the hour, permanent crown three weeks later. No drama, no surprise bill.', 5, 'Emergency Care', 20),
-('Daniel K.', 'I lost a front tooth in a bike accident. The implant Dr. Marsh placed is indistinguishable from the others — my own mother could not pick which one it was.', 5, 'Dental Implants', 30),
-('Sofia R.', 'Dr. Okonjo showed me a digital preview of my veneers and I asked to make them smaller and less white. He agreed immediately. The result looks like my teeth, just better.', 5, 'Porcelain Veneers', 40),
-('James H.', 'Fourteen months of aligners and my bottom teeth are finally straight at thirty-eight. Dr. Raman was realistic from day one about what would and would not shift.', 5, 'Clear Aligners', 50),
-('Amara O.', 'My six-year-old asks when she can go back to the dentist. I did not think that was a sentence I would ever type.', 5, 'Children''s Dentistry', 60)
+('Marcus T.', 'I had avoided dentists for eleven years out of pure fear. Dr. Marsh talked me through every single step and stopped whenever I raised a hand. Two visits later I am fully caught up and genuinely not scared any more.', 5, 'Teeth Cleaning', '/images/patient-marcus.jpg', 10),
+('Rachel P.', 'Cracked a molar on a Sunday evening and they saw me first thing Monday. Out of pain within the hour, permanent crown three weeks later. No drama, no surprise bill.', 5, 'Emergency Care', '/images/patient-rachel.jpg', 20),
+('Daniel K.', 'I lost a front tooth in a bike accident. The implant Dr. Marsh placed is indistinguishable from the others — my own mother could not pick which one it was.', 5, 'Dental Implants', '/images/patient-daniel.jpg', 30),
+('Sofia R.', 'Dr. Okonjo showed me a digital preview of my veneers and I asked to make them smaller and less white. He agreed immediately. The result looks like my teeth, just better.', 5, 'Porcelain Veneers', '/images/patient-sofia.jpg', 40),
+('James H.', 'Fourteen months of aligners and my bottom teeth are finally straight at thirty-eight. Dr. Raman was realistic from day one about what would and would not shift.', 5, 'Clear Aligners', null, 50),
+('Amara O.', 'My six-year-old asks when she can go back to the dentist. I did not think that was a sentence I would ever type.', 5, 'Children''s Dentistry', null, 60)
 on conflict do nothing;
 
 -- ---------------------------------------------------------------------------
@@ -329,6 +331,8 @@ insert into public.blogs
   (title, slug, excerpt, content, author_name, tags, read_minutes,
    is_published, published_at, meta_title, meta_description)
 values
+-- cover_image_url is set per row after this insert, so the long content blocks
+-- stay readable.
 (
   'How to Choose a Dentist Near You (Without Guessing)',
   'how-to-choose-a-dentist-near-you',
@@ -528,6 +532,13 @@ Book a cosmetic consultation and start with the preview. There is no obligation 
   'Worried veneers will look fake? A cosmetic dentist breaks down the four decisions — shade, shape, proportion and overtreatment — that make cosmetic work obvious.'
 )
 on conflict (slug) do nothing;
+
+-- Cover photographs. These point at the files in public/images; swap in your own
+-- photography, or upload to the `blog` storage bucket and use those URLs.
+update public.blogs set cover_image_url = '/images/blog-choosing-a-dentist.jpg'  where slug = 'how-to-choose-a-dentist-near-you' and cover_image_url is null;
+update public.blogs set cover_image_url = '/images/blog-teeth-cleaning.jpg'      where slug = 'how-often-teeth-cleaning'          and cover_image_url is null;
+update public.blogs set cover_image_url = '/images/blog-implants-vs-bridges.jpg' where slug = 'dental-implants-vs-bridges'        and cover_image_url is null;
+update public.blogs set cover_image_url = '/images/blog-cosmetic-dentistry.jpg'  where slug = 'will-cosmetic-dentistry-look-fake' and cover_image_url is null;
 
 -- ---------------------------------------------------------------------------
 -- Link testimonials to their services where the names line up

@@ -5,12 +5,13 @@ import { Container } from "@/components/ui/Container";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { Stars } from "@/components/ui/Stars";
 import { telHref } from "@/lib/format";
-import type { Doctor, Service, SiteSettings } from "@/lib/types";
+import type { Service, SiteSettings, Testimonial } from "@/lib/types";
 
 type Props = {
   settings: SiteSettings;
   services: Service[];
-  doctors: Doctor[];
+  /** Patient faces for the social-proof row, as in the design. */
+  testimonials: Testimonial[];
   reviewCount: number;
   patientCount: string;
 };
@@ -25,12 +26,18 @@ const HIGHLIGHTS = [
 export function Hero({
   settings,
   services,
-  doctors,
+  testimonials,
   reviewCount,
   patientCount,
 }: Props) {
   const tel = telHref(settings.phone);
   const city = settings.city ?? "your area";
+
+  const faces = testimonials.map((testimonial) => ({
+    id: testimonial.id,
+    name: testimonial.patient_name,
+    photo_url: testimonial.photo_url,
+  }));
 
   return (
     <section className="bg-brand-50/50">
@@ -87,7 +94,7 @@ export function Hero({
 
             {/* Social proof */}
             <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <AvatarStack people={doctors} size={36} />
+              <AvatarStack people={faces} size={36} />
               <p className="text-sm text-ink-600">
                 Trusted by{" "}
                 <span className="font-semibold text-ink-900">

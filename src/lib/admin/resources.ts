@@ -288,6 +288,13 @@ export const RESOURCES: Resource[] = [
         help: "Shown under the patient's name. Should match a service title to appear on that service page.",
       },
       {
+        name: "photo_url",
+        label: "Patient photograph",
+        type: "image",
+        bucket: "doctors",
+        help: "Only with the patient's written consent. Leave blank to show their initials instead.",
+      },
+      {
         name: "message",
         label: "Review",
         type: "textarea",

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { BlogCard } from "@/components/site/BlogCard";
 import { CtaBand } from "@/components/site/CtaBand";
 import { FaqAccordion } from "@/components/site/FaqAccordion";
@@ -106,7 +104,7 @@ export default async function HomePage() {
       <Hero
         settings={settings}
         services={services}
-        doctors={doctors}
+        testimonials={testimonials}
         reviewCount={500}
         patientCount="12,000+"
       />
@@ -136,12 +134,6 @@ export default async function HomePage() {
               />
             ))}
           </div>
-
-          <div className="mt-10 flex justify-center">
-            <ButtonLink href="/services" variant="secondary" size="lg">
-              View all {services.length} services
-            </ButtonLink>
-          </div>
         </Container>
       </section>
 
@@ -155,7 +147,7 @@ export default async function HomePage() {
               <SectionHeading
                 align="left"
                 eyebrow="Why choose us"
-                title="Care You Can Trust"
+                title="Experience You Can Trust"
                 description="We combine careful clinical work with honest advice — explained in plain language, quoted in writing, and never rushed."
                 className="mx-0"
               />
@@ -176,13 +168,9 @@ export default async function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Testimonials                                                     */}
       {/* ---------------------------------------------------------------- */}
-      <Testimonials
-        testimonials={testimonials}
-        googleReviewsUrl={settings.google_reviews_url}
-        limit={4}
-      />
-
-      <BeforeAfter />
+      {/* The design closes this section with the cards themselves — no
+          trailing "read all reviews" link. */}
+      <Testimonials testimonials={testimonials} limit={4} />
 
       {/* ---------------------------------------------------------------- */}
       {/* Conversion band                                                  */}
@@ -208,15 +196,6 @@ export default async function HomePage() {
           <div className="mt-10">
             <FaqAccordion faqs={homeFaqs} />
           </div>
-
-          <p className="mt-6 text-center text-[0.9375rem] text-ink-600">
-            <Link
-              href="/faq"
-              className="font-semibold text-brand-600 hover:underline"
-            >
-              Read all {faqs.length} questions →
-            </Link>
-          </p>
         </Container>
       </section>
 
@@ -240,14 +219,9 @@ export default async function HomePage() {
                   post={post}
                   author={authorFor(post.author_name)}
                   showAuthor={false}
+                  overlayTag
                 />
               ))}
-            </div>
-
-            <div className="mt-10 flex justify-center">
-              <ButtonLink href="/blog" variant="secondary" size="lg">
-                Read the blog
-              </ButtonLink>
             </div>
           </Container>
         </section>

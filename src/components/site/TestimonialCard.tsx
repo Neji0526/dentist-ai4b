@@ -16,7 +16,11 @@ export function TestimonialCard({ testimonial }: Props) {
       </blockquote>
 
       <figcaption className="mt-5 flex items-center gap-3 border-t border-ink-100 pt-4">
-        <Avatar name={testimonial.patient_name} size={38} />
+        <Avatar
+          name={testimonial.patient_name}
+          src={testimonial.photo_url}
+          size={38}
+        />
         <div>
           <p className="text-sm font-semibold text-ink-900">
             {testimonial.patient_name}

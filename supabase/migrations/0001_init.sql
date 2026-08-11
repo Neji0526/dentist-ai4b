@@ -150,6 +150,8 @@ create table if not exists public.testimonials (
   message      text not null,
   rating       smallint not null default 5 check (rating between 1 and 5),
   treatment    text,
+  -- Patient portrait shown on the testimonial card. Falls back to initials.
+  photo_url    text,
   service_id   uuid references public.services (id) on delete set null,
   is_published boolean not null default true,
   sort_order   integer not null default 0,

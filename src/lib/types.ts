@@ -64,6 +64,7 @@ export type Testimonial = {
   message: string;
   rating: number;
   treatment: string | null;
+  photo_url: string | null;
   service_id: string | null;
   is_published: boolean;
   sort_order: number;

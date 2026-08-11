@@ -14,6 +14,11 @@ type Props = {
   author?: Doctor | null;
   /** Swap the author byline for a date + Read more footer. */
   showAuthor?: boolean;
+  /**
+   * Puts the tag on the cover photo and drops the date / read-time row, as the
+   * homepage design does.
+   */
+  overlayTag?: boolean;
 };
 
 /** Rotates the illustrated fallback so a grid of posts is not identical. */
@@ -29,6 +34,7 @@ export function BlogCard({
   featured = false,
   author,
   showAuthor = true,
+  overlayTag = false,
 }: Props) {
   const published = post.published_at ?? post.created_at;
 
@@ -70,24 +76,34 @@ export function BlogCard({
             className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]"
           />
         )}
+
+        {overlayTag && post.tags[0] ? (
+          <span className="absolute bottom-3 left-3 z-10 rounded-md bg-white/95 px-2.5 py-1 text-[0.625rem] font-bold uppercase tracking-[0.08em] text-brand-700 shadow-sm backdrop-blur-sm">
+            {post.tags[0]}
+          </span>
+        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-500">
-          {post.tags[0] ? (
-            <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
-              {post.tags[0]}
+        {overlayTag ? null : (
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-500">
+            {post.tags[0] ? (
+              <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
+                {post.tags[0]}
+              </span>
+            ) : null}
+            <time dateTime={published}>{formatDate(published)}</time>
+            <span aria-hidden="true" className="text-ink-300">
+              ·
             </span>
-          ) : null}
-          <time dateTime={published}>{formatDate(published)}</time>
-          <span aria-hidden="true" className="text-ink-300">
-            ·
-          </span>
-          <span>{post.read_minutes} min read</span>
-        </div>
+            <span>{post.read_minutes} min read</span>
+          </div>
+        )}
 
         <h3
-          className={`mt-3 leading-snug ${featured ? "text-[1.5rem]" : "text-[1.0625rem]"}`}
+          className={`leading-snug ${overlayTag ? "" : "mt-3"} ${
+            featured ? "text-[1.5rem]" : "text-[1.0625rem]"
+          }`}
         >
           <Link href={`/blog/${post.slug}`} className="hover:text-brand-700">
             <span className="absolute inset-0" aria-hidden="true" />

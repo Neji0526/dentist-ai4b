@@ -24,6 +24,10 @@ alter table public.site_settings
 alter table public.site_settings
   add column if not exists yelp_url text;
 
+-- Patient portrait on the testimonial cards.
+alter table public.testimonials
+  add column if not exists photo_url text;
+
 -- ---------------------------------------------------------------------------
 -- Newsletter signups from the blog page
 -- ---------------------------------------------------------------------------
