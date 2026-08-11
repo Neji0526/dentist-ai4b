@@ -88,7 +88,7 @@ export default async function ContactPage() {
             <div className="grid gap-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 {settings.phone ? (
-                  <InfoCard icon="phone" label="Call us">
+                  <InfoCard icon="phone" label="Call Us">
                     <a
                       href={tel ?? undefined}
                       className="font-[family-name:var(--font-display)] text-lg font-bold text-brand-700 hover:underline"
@@ -102,7 +102,7 @@ export default async function ContactPage() {
                 ) : null}
 
                 {settings.email ? (
-                  <InfoCard icon="mail" label="Email us">
+                  <InfoCard icon="mail" label="Email Us">
                     <a
                       href={`mailto:${settings.email}`}
                       className="break-all font-semibold text-brand-700 hover:underline"
@@ -117,7 +117,7 @@ export default async function ContactPage() {
               </div>
 
               {address ? (
-                <InfoCard icon="pin" label="Our location">
+                <InfoCard icon="pin" label="Our Location">
                   <address className="not-italic font-semibold text-ink-900">
                     {settings.address_line}
                     <br />
@@ -141,9 +141,13 @@ export default async function ContactPage() {
                         href={whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-mint-700 hover:underline"
+                        className="flex items-center gap-2 text-mint-700 hover:underline"
                       >
-                        <ServiceIcon name="phone" className="h-4 w-4" />
+                        {/* Filled green disc, so the WhatsApp route reads as
+                            its own channel rather than a second phone link. */}
+                        <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-mint-500 text-white">
+                          <ServiceIcon name="phone" className="h-[11px] w-[11px]" />
+                        </span>
                         Message us on WhatsApp →
                       </a>
                     ) : null}
@@ -152,7 +156,7 @@ export default async function ContactPage() {
               ) : null}
 
               {settings.opening_hours.length > 0 ? (
-                <InfoCard icon="clock" label="Opening hours">
+                <InfoCard icon="clock" label="Opening Hours">
                   <dl className="text-[0.9375rem]">
                     {settings.opening_hours.map((entry) => (
                       <div
@@ -174,7 +178,7 @@ export default async function ContactPage() {
                     title={`Map showing ${settings.clinic_name}`}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="h-[300px] w-full border-0"
+                    className="h-[220px] w-full border-0"
                   />
                 </div>
               ) : null}
@@ -184,7 +188,7 @@ export default async function ContactPage() {
               <LeadForm
                 services={services}
                 source="contact-page"
-                icon="mail"
+                icon={null}
                 title="Send us a message"
                 description="Questions about insurance, costs or whether we can help? Ask away — we'll come back to you by phone."
               />

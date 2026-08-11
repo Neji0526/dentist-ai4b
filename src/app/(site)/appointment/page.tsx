@@ -9,6 +9,7 @@ import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { Stars } from "@/components/ui/Stars";
 import { getServices, getSiteSettings, getTestimonials } from "@/lib/data";
 import { telHref } from "@/lib/format";
+import { localImage } from "@/lib/local-media";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -40,27 +41,15 @@ const STEPS = [
   },
 ];
 
+/**
+ * Title-only, as in the design — the closing band reassures at a glance rather
+ * than repeating what the page has already said.
+ */
 const REASSURANCE = [
-  {
-    icon: "shield",
-    title: "Same-day emergency care",
-    copy: "Slots held open every weekday, whenever possible.",
-  },
-  {
-    icon: "card",
-    title: "Most insurance accepted",
-    copy: "We file PPO claims on your behalf.",
-  },
-  {
-    icon: "chair",
-    title: "Comfortable, modern clinic",
-    copy: "Gentle technique and unhurried appointments.",
-  },
-  {
-    icon: "users",
-    title: "Friendly team, here to help",
-    copy: "A real person answers during opening hours.",
-  },
+  { icon: "shield", title: "Same-day emergency care when possible" },
+  { icon: "card", title: "Most insurance plans accepted" },
+  { icon: "chair", title: "Comfortable, modern clinic" },
+  { icon: "users", title: "Friendly team here to help" },
 ];
 
 export default async function AppointmentPage() {
@@ -86,7 +75,9 @@ export default async function AppointmentPage() {
         description="Fill in the form and we will call you back within one business hour to confirm. Prefer to talk to a person right away? Call us — we always answer during opening hours."
         breadcrumbs={[{ name: "Book an appointment", path: "/appointment" }]}
         scene="operatory"
-        image={settings.hero_image_url}
+        // CMS setting wins; otherwise public/images/appointment-hero.jpg if it
+        // has been added; otherwise the illustrated operatory scene.
+        image={settings.hero_image_url ?? localImage("appointment-hero.jpg")}
         imageAlt={`Treatment room at ${settings.clinic_name}`}
       >
         {tel ? (

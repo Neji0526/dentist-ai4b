@@ -20,8 +20,8 @@ type Props = {
   description?: string;
   /** Ask for a preferred day and time as well as the basics. */
   withScheduling?: boolean;
-  /** Icon badge above the form heading. */
-  icon?: string;
+  /** Icon badge above the form heading. Pass null for a heading-only card. */
+  icon?: string | null;
   /** Reassurance line under the submit button, e.g. response time. */
   footnote?: string;
   className?: string;
@@ -103,7 +103,7 @@ export function LeadForm({
 
   const shell =
     variant === "card"
-      ? "rounded-3xl bg-white p-6 shadow-[0_1px_2px_rgba(13,31,45,0.04),0_24px_48px_-24px_rgba(13,31,45,0.22)] ring-1 ring-ink-100 sm:p-7"
+      ? "rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(13,31,45,0.04),0_24px_48px_-24px_rgba(13,31,45,0.22)] ring-1 ring-ink-100 sm:p-7"
       : "";
 
   if (state.status === "success") {
@@ -141,9 +141,11 @@ export function LeadForm({
     <div className={`${shell} ${className}`}>
       {variant === "card" ? (
         <div className="mb-6">
-          <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-            <ServiceIcon name={icon} className="h-6 w-6" />
-          </span>
+          {icon ? (
+            <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+              <ServiceIcon name={icon} className="h-6 w-6" />
+            </span>
+          ) : null}
           <h3 className="text-xl">{title}</h3>
           <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{description}</p>
         </div>

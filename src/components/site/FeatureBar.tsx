@@ -4,7 +4,8 @@ import { ServiceIcon } from "@/components/ui/ServiceIcon";
 export type FeatureItem = {
   icon: string;
   title: string;
-  copy: string;
+  /** Omit for a title-only item, as in the appointment page band. */
+  copy?: string;
 };
 
 type Props = {
@@ -28,6 +29,10 @@ export function FeatureBar({ items, variant = "band", className = "" }: Props) {
   // credentials separated by white space alone.
   const divided = variant === "floating" || variant === "panel";
 
+  // The full-width band is a lighter closing strip in the designs: smaller
+  // chips, smaller type, and centred against the (usually copy-less) label.
+  const compact = variant === "band";
+
   const list = (
     <ul
       className={`grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 ${
@@ -41,20 +46,31 @@ export function FeatureBar({ items, variant = "band", className = "" }: Props) {
       {items.map((item, index) => (
         <li
           key={item.title}
-          className={`flex items-start gap-3.5 ${
+          className={`flex gap-3.5 ${compact ? "items-center" : "items-start"} ${
             divided && index > 0 ? "lg:pl-8" : ""
           }`}
         >
           <span
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-brand-600 ${
-              variant === "panel" ? "bg-white" : "bg-brand-50"
-            }`}
+            className={`flex shrink-0 items-center justify-center rounded-xl text-brand-600 ${
+              compact ? "h-9 w-9" : "h-11 w-11"
+            } ${variant === "panel" ? "bg-white" : "bg-brand-50"}`}
           >
-            <ServiceIcon name={item.icon} className="h-[22px] w-[22px]" />
+            <ServiceIcon
+              name={item.icon}
+              className={compact ? "h-[18px] w-[18px]" : "h-[22px] w-[22px]"}
+            />
           </span>
           <div className="min-w-0">
-            <p className="font-semibold leading-snug text-ink-900">{item.title}</p>
-            <p className="mt-1 text-sm leading-relaxed text-ink-600">{item.copy}</p>
+            <p
+              className={`font-semibold leading-snug text-ink-900 ${
+                compact ? "text-sm" : ""
+              }`}
+            >
+              {item.title}
+            </p>
+            {item.copy ? (
+              <p className="mt-1 text-sm leading-relaxed text-ink-600">{item.copy}</p>
+            ) : null}
           </div>
         </li>
       ))}
@@ -92,7 +108,7 @@ export function FeatureBar({ items, variant = "band", className = "" }: Props) {
   }
 
   return (
-    <section className={`border-y border-ink-100 bg-brand-50/40 py-9 ${className}`}>
+    <section className={`border-y border-ink-100 bg-brand-50/40 py-7 ${className}`}>
       <Container width="wide">{list}</Container>
     </section>
   );
